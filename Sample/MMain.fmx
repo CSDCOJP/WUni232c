@@ -1,0 +1,346 @@
+object MainForm: TMainForm
+  Left = 0
+  Top = 0
+  Caption = 'TestForm'
+  ClientHeight = 944
+  ClientWidth = 703
+  Fill.Kind = Gradient
+  Fill.Gradient.Points = <
+    item
+      Color = xFF52F6DF
+      Offset = 0.000000000000000000
+    end
+    item
+      Color = claWhite
+      Offset = 1.000000000000000000
+    end>
+  Fill.Gradient.StartPosition.X = 0.500000000000000000
+  Fill.Gradient.StartPosition.Y = 1.000000000000000000
+  Fill.Gradient.StopPosition.X = 0.499999970197677600
+  Fill.Gradient.StopPosition.Y = 0.000000000000000000
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Open: TButton
+    Position.X = 24.000000000000000000
+    Position.Y = 20.000000000000000000
+    Size.Width = 177.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'w'
+    TabOrder = 5
+    Text = 'OPEN UART'
+    OnClick = OpenClick
+  end
+  object WriteUart: TButton
+    Position.X = 32.000000000000000000
+    Position.Y = 334.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'w'
+    TabOrder = 6
+    Text = 'Write Uart'
+    OnClick = WriteUartClick
+  end
+  object ReadUart: TButton
+    Position.X = 168.000000000000000000
+    Position.Y = 334.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    StyleLookup = 'w'
+    TabOrder = 7
+    Text = 'Read Uart'
+    OnClick = ReadUartClick
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.X = 24.000000000000000000
+    Position.Y = 377.000000000000000000
+    Size.Width = 337.000000000000000000
+    Size.Height = 176.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+    Viewport.Width = 333.000000000000000000
+    Viewport.Height = 172.000000000000000000
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 10
+    Text = '0123456789abcdefg'
+    Position.X = 40.000000000000000000
+    Position.Y = 280.000000000000000000
+    Size.Width = 297.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Close: TButton
+    Position.X = 200.000000000000000000
+    Position.Y = 20.000000000000000000
+    Size.Width = 153.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+    Text = 'Close Uart'
+    OnClick = CloseClick
+  end
+  object Edit2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 19
+    Text = '9600'
+    Position.X = 208.000000000000000000
+    Position.Y = 66.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label1: TLabel
+    Position.X = 296.000000000000000000
+    Position.Y = 136.000000000000000000
+    Size.Width = 289.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Label1'
+  end
+  object Parity: TComboBox
+    Items.Strings = (
+      'none'
+      'odd'
+      'even'
+      'mark'
+      'spcae')
+    Position.X = 144.000000000000000000
+    Position.Y = 130.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 25
+    OnChange = ParityChange
+  end
+  object StopBit: TComboBox
+    Items.Strings = (
+      '1bit'
+      '2bit')
+    Position.X = 144.000000000000000000
+    Position.Y = 200.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 26
+    OnChange = StopBitChange
+  end
+  object BitSet: TComboBox
+    Items.Strings = (
+      '7bit'
+      '8bit')
+    Position.X = 40.000000000000000000
+    Position.Y = 130.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 24
+    OnChange = BitSetChange
+  end
+  object Flow: TComboBox
+    Items.Strings = (
+      'None'
+      'CtsRts'
+      'DtrDsr'
+      'XONOFF')
+    Position.X = 40.000000000000000000
+    Position.Y = 200.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 30
+    OnChange = FlowChange
+  end
+  object Label2: TLabel
+    Position.X = 32.000000000000000000
+    Position.Y = 100.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Byte Order'
+  end
+  object Label3: TLabel
+    Position.X = 136.000000000000000000
+    Position.Y = 100.000000000000000000
+    Size.Width = 82.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Parity'
+  end
+  object Rate: TLabel
+    Position.X = 120.000000000000000000
+    Position.Y = 76.000000000000000000
+    Size.Width = 82.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Rate'
+  end
+  object Label4: TLabel
+    Position.X = 32.000000000000000000
+    Position.Y = 180.000000000000000000
+    Size.Width = 82.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Flow'
+  end
+  object Label5: TLabel
+    Position.X = 144.000000000000000000
+    Position.Y = 180.000000000000000000
+    Size.Width = 82.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'StopBit'
+  end
+  object Label6: TLabel
+    Position.X = 24.000000000000000000
+    Position.Y = 256.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'WriteData'
+  end
+  object Panel1: TPanel
+    Position.X = 32.000000000000000000
+    Position.Y = 584.000000000000000000
+    Size.Width = 161.000000000000000000
+    Size.Height = 193.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 36
+    object Cts: TRadioButton
+      GroupName = 'a'
+      Position.X = 24.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = 'Cts'
+    end
+    object Rts: TRadioButton
+      GroupName = 'b'
+      Position.X = 24.000000000000000000
+      Position.Y = 56.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'DSR'
+    end
+    object Ri: TRadioButton
+      GroupName = 'c'
+      Position.X = 24.000000000000000000
+      Position.Y = 88.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Ri'
+    end
+    object DCD: TRadioButton
+      GroupName = 'd'
+      Position.X = 24.000000000000000000
+      Position.Y = 104.000000000000000000
+      Size.Width = 152.000000000000000000
+      Size.Height = 47.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'DCD'
+    end
+    object ReadStaus: TButton
+      Position.X = 8.000000000000000000
+      Position.Y = 144.000000000000000000
+      Size.Width = 145.000000000000000000
+      Size.Height = 44.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = 'ReadStaus'
+      OnClick = ReadStausClick
+    end
+    object CheckBox1: TCheckBox
+      Position.X = 208.000000000000000000
+      Position.Y = 16.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      Text = 'DTR'
+      OnChange = CheckBox1Change
+    end
+    object CheckBox2: TCheckBox
+      Position.X = 208.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      Text = 'RTS'
+      OnChange = CheckBox1Change
+    end
+  end
+  object Button1: TButton
+    Position.X = 288.000000000000000000
+    Position.Y = 334.000000000000000000
+    Size.Width = 65.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 40
+    Text = 'Clr'
+    OnClick = Button1Click
+  end
+  object Label7: TLabel
+    Position.X = 304.000000000000000000
+    Position.Y = 200.000000000000000000
+    Size.Width = 281.000000000000000000
+    Size.Height = 113.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Label7'
+  end
+  object Break: TButton
+    Position.X = 384.000000000000000000
+    Position.Y = 352.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 44
+    Text = 'Break'
+    OnClick = BreakClick
+  end
+  object B11: TButton
+    Position.X = 384.000000000000000000
+    Position.Y = 432.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 48
+    Text = 'B11'
+    OnClick = B11Click
+  end
+  object B13: TButton
+    Position.X = 384.000000000000000000
+    Position.Y = 488.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 49
+    Text = 'B13'
+    OnClick = B13Click
+  end
+  object Uni232c: TWUni232c
+    Port = 11
+    BaudRate = 115200
+    ParityBits = ParityNone
+    ByteSize = Bit8
+    StopBits = Stopbit1
+    FlowControls = CtrlNone
+    Left = 384
+    Top = 152
+  end
+end
